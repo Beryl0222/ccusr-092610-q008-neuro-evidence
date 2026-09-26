@@ -20,9 +20,21 @@
       "type": "string",
       "enum": [
         "STATUS_VERIFIED",
+        "INDICATION_DECLARED",
+        "SERVICE_REGISTERED",
         "MAPPING_PROPOSED",
+        "MAPPING_APPROVED",
+        "PRICE_VERSION_EFFECTIVE",
+        "EVIDENCE_SUMMARIZED",
+        "SCOPE_NARROWED",
         "HOSPITAL_ADMITTED",
+        "TRIAL_OPENED",
+        "TRIAL_QUOTA_GRANTED",
+        "CONSENT_RECORDED",
+        "CLAIM_REQUESTED",
         "CLAIM_SETTLED",
+        "CLAIM_REVALIDATED",
+        "IMPACT_REVIEW_OPENED",
         "IMPACT_REVIEWED"
       ]
     },
@@ -30,8 +42,13 @@
       "type": "string",
       "enum": [
         "product_status",
+        "service_catalog",
         "service_mapping",
+        "price_version",
+        "clinical_evidence",
+        "hospital_access",
         "regional_trial",
+        "patient_consent",
         "claim_record"
       ]
     },
@@ -49,6 +66,10 @@
     },
     "payload": {
       "type": "object"
+    },
+    "actor": {
+      "type": "string",
+      "minLength": 1
     }
   },
   "payload_required_by_event": {
@@ -56,9 +77,76 @@
       "authority_ref",
       "scope"
     ],
+    "INDICATION_DECLARED": [
+      "indication_id",
+      "label"
+    ],
+    "SERVICE_REGISTERED": [
+      "service_item_code",
+      "name"
+    ],
+    "MAPPING_PROPOSED": [
+      "product_id",
+      "service_item_code",
+      "submitter"
+    ],
+    "MAPPING_APPROVED": [
+      "approver"
+    ],
+    "PRICE_VERSION_EFFECTIVE": [
+      "product_id",
+      "price_revision",
+      "amount",
+      "effective_from"
+    ],
+    "EVIDENCE_SUMMARIZED": [
+      "product_id",
+      "evidence_kind",
+      "summary_ref"
+    ],
+    "SCOPE_NARROWED": [
+      "product_id",
+      "removed_indication_ids"
+    ],
+    "HOSPITAL_ADMITTED": [
+      "hospital_id",
+      "service_item_code"
+    ],
+    "TRIAL_OPENED": [
+      "region",
+      "service_item_code",
+      "quota_total"
+    ],
+    "TRIAL_QUOTA_GRANTED": [
+      "region",
+      "service_item_code",
+      "patient_ref"
+    ],
+    "CONSENT_RECORDED": [
+      "patient_ref",
+      "disclosure_scope",
+      "granted"
+    ],
+    "CLAIM_REQUESTED": [
+      "product_id",
+      "service_item_code",
+      "region",
+      "hospital_id",
+      "patient_ref",
+      "indication_id"
+    ],
     "CLAIM_SETTLED": [
+      "product_revision",
       "service_revision",
       "price_revision"
+    ],
+    "CLAIM_REVALIDATED": [
+      "still_bookable",
+      "reason"
+    ],
+    "IMPACT_REVIEW_OPENED": [
+      "trigger_event_id",
+      "reason"
     ],
     "IMPACT_REVIEWED": [
       "affected_period",
