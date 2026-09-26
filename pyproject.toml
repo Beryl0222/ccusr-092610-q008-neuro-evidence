@@ -1,0 +1,5 @@
+[project]
+name = "neuro-evidence"
+version = "0.1.0"
+description = "脑机创新项目医保证据接力簿领域契约"
+requires-python = ">=3.11"

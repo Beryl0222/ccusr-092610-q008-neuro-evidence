@@ -1,0 +1,12 @@
+{
+  "event_id": "092601-008-sample-001",
+  "event_type": "STATUS_VERIFIED",
+  "aggregate_type": "product_status",
+  "aggregate_id": "neuro_evidence-001",
+  "occurred_at": "2026-09-25T10:00:00+08:00",
+  "version": 1,
+  "payload": {
+    "authority_ref": "sample-authority_ref",
+    "scope": "sample-scope"
+  }
+}
