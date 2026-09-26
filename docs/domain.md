@@ -11,3 +11,7 @@
 - `IMPACT_REVIEWED`：载荷还需包含 `affected_period`, `decision`。
 
 相同事件标识的业务幂等、冲突隔离和状态推进由上层服务负责；本仓库只定义可稳定交换的基础事实。
+
+上层证据接力服务的扩展事件（`contracts/service.schema.json`）与业务规则
+（授权确认、职责分离、版本固化、幂等隔离、名额并发、影响评估、恢复、
+授权披露）见 `docs/service.md`。

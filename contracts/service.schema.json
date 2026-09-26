@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "脑机创新技术证据接力服务事件",
+  "type": "object",
+  "required": [
+    "event_id",
+    "event_type",
+    "aggregate_type",
+    "aggregate_id",
+    "occurred_at",
+    "version",
+    "payload"
+  ],
+  "properties": {
+    "event_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "event_type": {
+      "type": "string",
+      "enum": [
+        "PRODUCT_REGISTERED",
+        "STATUS_VERIFIED",
+        "SCOPE_NARROWED",
+        "SERVICE_REGISTERED",
+        "EVIDENCE_SUMMARIZED",
+        "MAPPING_PROPOSED",
+        "MAPPING_APPROVED",
+        "PRICE_PUBLISHED",
+        "HOSPITAL_ADMITTED",
+        "TRIAL_OPENED",
+        "TRIAL_ALLOCATED",
+        "TRIAL_RELEASED",
+        "BOOKING_CREATED",
+        "REVERIFICATION_FLAGGED",
+        "REVERIFICATION_PASSED",
+        "REVERIFICATION_BLOCKED",
+        "CONSENT_RECORDED",
+        "NOTICE_ACKNOWLEDGED",
+        "CLAIM_SETTLED",
+        "IMPACT_TASK_OPENED",
+        "IMPACT_REVIEWED"
+      ]
+    },
+    "aggregate_type": {
+      "type": "string",
+      "enum": [
+        "product_catalog",
+        "product_status",
+        "service_catalog",
+        "service_mapping",
+        "evidence_ledger",
+        "price_book",
+        "hospital_access",
+        "regional_trial",
+        "patient_booking",
+        "patient_consent",
+        "claim_record",
+        "impact_task"
+      ]
+    },
+    "aggregate_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "occurred_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "payload": {
+      "type": "object"
+    }
+  },
+  "payload_required_by_event": {
+    "PRODUCT_REGISTERED": ["product_code", "product_name"],
+    "STATUS_VERIFIED": ["authority_ref", "scope", "status", "required_evidence"],
+    "SCOPE_NARROWED": ["scope", "required_evidence", "reason"],
+    "SERVICE_REGISTERED": ["service_code", "service_name"],
+    "EVIDENCE_SUMMARIZED": ["product_code", "evidence_type", "summary_ref", "supports"],
+    "MAPPING_PROPOSED": ["product_code", "service_code", "proposed_by"],
+    "MAPPING_APPROVED": ["mapping_id", "approved_by", "revision"],
+    "PRICE_PUBLISHED": ["product_code", "service_code", "price_revision", "amount", "effective_from"],
+    "HOSPITAL_ADMITTED": ["hospital_id", "service_code", "region", "admitted_by"],
+    "TRIAL_OPENED": ["trial_id", "region", "service_code", "quota"],
+    "TRIAL_ALLOCATED": ["trial_id", "booking_id"],
+    "TRIAL_RELEASED": ["trial_id", "booking_id"],
+    "BOOKING_CREATED": ["booking_id", "patient_id", "hospital_id", "service_code", "scheduled_at"],
+    "REVERIFICATION_FLAGGED": ["booking_id", "trigger_event_id", "reason"],
+    "REVERIFICATION_PASSED": ["booking_id", "trigger_event_id"],
+    "REVERIFICATION_BLOCKED": ["booking_id", "trigger_event_id", "reasons"],
+    "CONSENT_RECORDED": ["patient_id", "granted", "categories"],
+    "NOTICE_ACKNOWLEDGED": ["patient_id", "notice_version"],
+    "CLAIM_SETTLED": ["biz_key", "booking_id", "service_revision", "price_revision"],
+    "IMPACT_TASK_OPENED": ["task_id", "claim_biz_key", "trigger_event_id", "reason"],
+    "IMPACT_REVIEWED": ["task_id", "affected_period", "decision"]
+  },
+  "additionalProperties": false
+}

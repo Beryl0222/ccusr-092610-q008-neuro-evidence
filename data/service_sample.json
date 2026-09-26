@@ -1,0 +1,14 @@
+{
+  "event_id": "service-sample-001",
+  "event_type": "CLAIM_SETTLED",
+  "aggregate_type": "claim_record",
+  "aggregate_id": "claim-2026-0926-0001",
+  "occurred_at": "2026-09-26T10:30:00+08:00",
+  "version": 1,
+  "payload": {
+    "biz_key": "claim-2026-0926-0001",
+    "booking_id": "booking-0001",
+    "service_revision": 1,
+    "price_revision": 2
+  }
+}
